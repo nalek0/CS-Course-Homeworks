@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Task1
+namespace Lab1
 {
 
     internal class MyHashTable

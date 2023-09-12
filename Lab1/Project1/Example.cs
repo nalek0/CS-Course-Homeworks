@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Task1
+namespace Lab1
 {
 
     class RunClass
