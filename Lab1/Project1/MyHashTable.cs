@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Task1
 {
+
     internal class MyHashTable
     {
 
@@ -16,7 +13,7 @@ namespace Task1
         public MyHashTable()
         {
             this.table = new LinkedList<object>[SIZE];
-            
+
             for (int i = 0; i < SIZE; i++)
             {
                 this.table[i] = new LinkedList<object>();
@@ -28,7 +25,8 @@ namespace Task1
             if (Contains(obj))
             {
                 return false;
-            } else
+            }
+            else
             {
                 int objectHash = obj.GetHashCode();
                 int tableIndex = objectHash % SIZE;
@@ -42,7 +40,7 @@ namespace Task1
         {
             int objectHash = obj.GetHashCode();
             int tableIndex = objectHash % SIZE;
-            
+
             return table[tableIndex].Remove(obj);
         }
 
@@ -55,4 +53,5 @@ namespace Task1
         }
 
     }
+
 }
