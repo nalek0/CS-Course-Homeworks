@@ -1,47 +1,51 @@
 ﻿namespace Task3
 {
+    
     internal class MyStask
     {
 
-        private LinkedList<int> stack;
+        LinkedList<int> _stack;
 
-        private LinkedList<int> minStack;
+        LinkedList<int> _minStack;
 
         public MyStask()
         {
-            this.stack = new LinkedList<int>();
-            this.minStack = new LinkedList<int>();
+            _stack = new LinkedList<int>();
+            _minStack = new LinkedList<int>();
         }
 
         public void Add(int value)
         {
-            stack.AddLast(value);
+            _stack.AddLast(value);
 
-            if (minStack.Last == null)
+            if (_minStack.Last == null)
             {
-                minStack.AddLast(value);
-            } else
+                _minStack.AddLast(value);
+            } 
+            else
             {
-                minStack.AddLast(Math.Min(minStack.Last.Value, value));
+                _minStack.AddLast(Math.Min(_minStack.Last.Value, value));
             }
         }
 
         public void Pop()
         {
-            minStack.RemoveLast();
-            stack.RemoveLast();
+            _minStack.RemoveLast();
+            _stack.RemoveLast();
         }
 
         public int GetMinValue()
         {
-            if (minStack.Last == null)
+            if (_minStack.Last == null)
             {
                 return 0;
-            } else
+            } 
+            else
             {
-                return minStack.Last.Value;
+                return _minStack.Last.Value;
             }
         }
 
     }
+
 }

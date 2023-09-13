@@ -1,4 +1,4 @@
-﻿namespace Lab1
+﻿namespace Task1
 {
 
     class RunClass

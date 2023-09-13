@@ -1,22 +1,20 @@
-﻿using System.Collections.Generic;
-
-namespace Lab1
+﻿namespace Task1
 {
 
     internal class MyHashTable
     {
 
-        private static int SIZE = 1000;
+        const int SIZE = 1000;
 
-        private LinkedList<object>[] table;
+        LinkedList<object>[] _table;
 
         public MyHashTable()
         {
-            this.table = new LinkedList<object>[SIZE];
+            _table = new LinkedList<object>[SIZE];
 
             for (int i = 0; i < SIZE; i++)
             {
-                this.table[i] = new LinkedList<object>();
+                _table[i] = new LinkedList<object>();
             }
         }
 
@@ -30,7 +28,7 @@ namespace Lab1
             {
                 int objectHash = obj.GetHashCode();
                 int tableIndex = objectHash % SIZE;
-                table[tableIndex].AddLast(obj);
+                _table[tableIndex].AddLast(obj);
 
                 return true;
             }
@@ -41,7 +39,7 @@ namespace Lab1
             int objectHash = obj.GetHashCode();
             int tableIndex = objectHash % SIZE;
 
-            return table[tableIndex].Remove(obj);
+            return _table[tableIndex].Remove(obj);
         }
 
         public bool Contains(object obj)
@@ -49,7 +47,7 @@ namespace Lab1
             int objectHash = obj.GetHashCode();
             int tableIndex = objectHash % SIZE;
 
-            return table[tableIndex].Contains(obj);
+            return _table[tableIndex].Contains(obj);
         }
 
     }
