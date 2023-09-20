@@ -1,6 +1,8 @@
-namespace Task1 {
+namespace Task1
+{
 
-    public sealed class Car {
+    public sealed class Car
+    {
 
         public CarType Type { get; }
 
@@ -14,7 +16,8 @@ namespace Task1 {
 
         public override string ToString() => "Car[" + Type.ToString() + ", " + StuddedTires.ToString() + "]";
 
-        public static implicit operator Car(Horse horse) {
+        public static implicit operator Car(Horse horse)
+        {
             switch (horse.Breed) {
                 case HorseBreed.Mustang:
                     return new Car(CarType.Sedan, horse.Horseshoes);
