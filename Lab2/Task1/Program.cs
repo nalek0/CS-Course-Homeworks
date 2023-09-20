@@ -1,8 +1,11 @@
-﻿namespace Task1 {
+﻿namespace Task1
+{
 
-    class MainClass {
+    class MainClass
+    {
 
-        public static void Main() {
+        public static void Main()
+        {
             MyHashTable table = new MyHashTable();
 
             Console.WriteLine("Add 1: {0}", table.Add(1));
