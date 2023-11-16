@@ -1,6 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.Threading;
+﻿using System.Diagnostics;
 
 namespace Task2
 {
@@ -21,27 +19,27 @@ namespace Task2
     internal class MainClass
     {
 
-        public static void AFunc(object foo)
+        public static void A(object foo)
         {
-            Foo instance = (Foo) foo;
+            Foo instance = (Foo)foo;
             instance.First.WaitOne();
             instance.first();
             instance.First.Close();
             instance.Second.Set();
         }
 
-        public static void BFunc(object foo)
+        public static void B(object foo)
         {
-            Foo instance = (Foo) foo;
+            Foo instance = (Foo)foo;
             instance.Second.WaitOne();
             instance.second();
             instance.Second.Close();
             instance.Third.Set();
         }
 
-        public static void CFunc(object foo)
+        public static void C(object foo)
         {
-            Foo instance = (Foo) foo;
+            Foo instance = (Foo)foo;
             instance.Third.WaitOne();
             instance.third();
             instance.Third.Close();
@@ -53,21 +51,22 @@ namespace Task2
             Foo instance = new Foo();
 
             Debug.Assert(args.Length == 3);
-            Debug.Assert(Int32.TryParse(args[0], out arg1));
-            Debug.Assert(Int32.TryParse(args[1], out arg2));
-            Debug.Assert(Int32.TryParse(args[2], out arg3));
+            Debug.Assert(int.TryParse(args[0], out arg1));
+            Debug.Assert(int.TryParse(args[1], out arg2));
+            Debug.Assert(int.TryParse(args[2], out arg3));
 
-            Thread A = new Thread(AFunc);
-            Thread B = new Thread(BFunc);
-            Thread C = new Thread(CFunc);
+            List<Thread> threads = new List<Thread>
+            {
+                new Thread(A),
+                new Thread(B),
+                new Thread(C)
+            };
 
-            A.Start(instance);
-            B.Start(instance);
-            C.Start(instance);
+            threads[arg1 - 1].Start(instance);
+            threads[arg2 - 1].Start(instance);
+            threads[arg3 - 1].Start(instance);
 
-            A.Join();
-            B.Join();
-            C.Join();
+            threads.ForEach(t => t.Join());
         }
 
     }
