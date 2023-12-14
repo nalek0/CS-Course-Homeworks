@@ -51,7 +51,8 @@ namespace Task1
             if (constructorInfo == null)
             {
                 return null;
-            } else
+            }
+            else
             {
                 return constructorInfo.Invoke(new object[0]);
             }
@@ -65,7 +66,8 @@ namespace Task1
             if (fieldInfo == null)
             {
                 Console.WriteLine("Cannot file field 'innerValue'");
-            } else
+            }
+            else
             {
                 Console.WriteLine(fieldInfo?.GetValue(instance));
             }
@@ -79,7 +81,8 @@ namespace Task1
             if (methodInfo == null)
             {
                 Console.WriteLine($"No method '{method}' found");
-            } else
+            }
+            else
             {
                 methodInfo.Invoke(instance, new object[] { int.Parse(attributes) });
 
@@ -94,11 +97,12 @@ namespace Task1
             while (true)
             {
                 string? line = Console.ReadLine();
-                
+
                 if (line == null || line.Trim().Equals(":q"))
                 {
                     break;
-                } else
+                }
+                else
                 {
                     Match match = Regex.Match(line, linePattern);
 
@@ -106,9 +110,10 @@ namespace Task1
                     {
                         string method = match.Groups.GetValueOrDefault("method")?.Value ?? "";
                         string attributes = match.Groups.GetValueOrDefault("attributes")?.Value ?? "";
-                        
+
                         InvokeMethod(instance, method, attributes);
-                    } else
+                    }
+                    else
                     {
                         Console.WriteLine("Invalid line.");
                     }
@@ -124,7 +129,8 @@ namespace Task1
             {
                 Console.WriteLine("Cannot find type constructor.");
                 Environment.Exit(1);
-            } else
+            }
+            else
             {
                 IterateInput(instance);
             }
