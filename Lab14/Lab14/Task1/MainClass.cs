@@ -40,7 +40,7 @@ namespace Task1
 
     }
 
-    public class Class
+    public class MainClass
     {
 
         private static object? InitialiseBox()
